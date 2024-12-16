@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asignación de Angelito</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #333;
+        }
+        #gift-assignment {
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            font-size: 20px;
+            color: #4CAF50;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Asignación de Angelito 🎁</h1>
+    <div id="gift-assignment">
+        <p>Haz clic para ver a quién le regalarás:</p>
+        <button onclick="assignGift()">Obtener asignación</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        // Lista de participantes
+        let participants = ["Zuni", "Isabel", "Kenia", "Carmen", "Ayleen", "Annelisse", "Juan J.", "Mini", "Pili", "Chelo", "Nikauly", "Paula"];
+        let assigned = [];
+
+        function assignGift() {
+            if (participants.length === 0) {
+                document.getElementById("result").innerHTML = "¡Ya no quedan participantes disponibles!";
+                return;
+            }
+
+            // Seleccionar aleatoriamente a quién le regalarás
+            const randomIndex = Math.floor(Math.random() * participants.length);
+            const chosenOne = participants[randomIndex];
+
+            // Mostrar resultado y eliminarlo de la lista
+            document.getElementById("result").innerHTML = `Te toca regalarle a: <b>${chosenOne}</b> 🎁`;
+
+            assigned.push(chosenOne); // Guardar en asignados
+            participants.splice(randomIndex, 1); // Eliminar de la lista
+        }
+    </script>
+</body>
+</html>
